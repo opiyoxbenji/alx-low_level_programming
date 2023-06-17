@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 /**
  * main - Entry point
  *
@@ -13,16 +14,11 @@ int main(void)
 	{
 		for (j = 1; j <= 99; j++)
 		{
-			int a = i / 10;
-			int b = i % 10;
-			int c = j / 10;
-			int d = j % 10;
-
-			putchar(a + '0');
-			putchar(b + '0');
+			putchar(i / 10 + '0');
+			putchar(i % 10 + '0');
 			putchar(' ');
-			putchar(c + '0');
-			putchar(d + '0');
+			putchar(j / 10 + '0');
+			putchar(j % 10 + '0');
 
 			if (i != 99 || j != 99)
 			{
