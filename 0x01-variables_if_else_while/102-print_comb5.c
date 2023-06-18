@@ -9,14 +9,13 @@
  */
 int main(void)
 {
-	int i = 0, j;
+	int i, j;
 
-	while (i <= 99)
+	for (i = 0; i < 100; i++)
 	{
-		j = i;
-		while (j <= 99)
+		for (j = 0; j < 100; j++)
 		{
-			if (j != i)
+			if (i < j)
 			{
 				putchar((i / 10) + 48);
 				putchar((i % 10) + 48);
@@ -24,15 +23,13 @@ int main(void)
 				putchar((j / 10) + 48);
 				putchar((j % 10) + 48);
 
-				if (i != 99 || j != 99)
+				if (i != 98 || j != 99)
 				{
 					putchar(',');
 					putchar(' ');
 				}
 			}
-			j++;
 		}
-		i++;
 	}
 	putchar('\n');
 
