@@ -15,7 +15,7 @@ void jack_bauer(void)
 
 		while (minute < 60)
 		{
-			printf("%02d:%02d", hour, minute);
+			printf("%02d:%02d\n", hour, minute);
 			minute += 2;
 		}
 		hour++;
