@@ -8,7 +8,7 @@
 int main(void)
 {
 	unsigned int prev = 1, current = 2, next;
-	int i = 2;
+	int i = 0;
 
 	printf("%u, %u", prev, current);
 
