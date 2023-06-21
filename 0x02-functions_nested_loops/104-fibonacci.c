@@ -8,9 +8,9 @@
 int main(void)
 {
 	unsigned int prev = 1, current = 2, next;
-	int i = 0;
+	int i = 2;
 
-	printf("%u, %u", prev, current);
+	printf("1, 2");
 
 	while (i < 98)
 	{
@@ -21,7 +21,7 @@ int main(void)
 		i++;
 	}
 
-	printf("\n");
+	printf(", %u\n", prev + current);
 
 	return (0);
 }
