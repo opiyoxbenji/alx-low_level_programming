@@ -8,15 +8,17 @@
 int main(void)
 {
 	unsigned int prev = 1, current = 2, next;
+	int i = 2;
 
 	printf("%u, %u", prev, current);
 
-	for (int i = 0; i < 96; i++)
+	while (i < 98)
 	{
 		next = prev + current;
 		printf(", %u", next);
 		prev = current;
 		current = next;
+		i++;
 	}
 
 	printf("\n");
