@@ -16,8 +16,9 @@ int main(void)
 			num /= divider;
 		else
 			divider++;
-		printf("%lu", num);
 	}
+
+	printf("%lu", num);
 
 	return (0);
 }
