@@ -22,7 +22,6 @@ int main(void)
 			divider++;
 		}
 	}
-
 	printf("%lu", num);
 
 	return (0);
