@@ -13,9 +13,14 @@ int main(void)
 	while (divider < num)
 	{
 		if (num % divider == 0)
+		{
 			num /= divider;
+			divider = 2;
+		}
 		else
+		{
 			divider++;
+		}
 	}
 
 	printf("%lu", num);
