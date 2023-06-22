@@ -18,11 +18,11 @@ int main(void)
 			divider = 2;
 		}
 		else
-		{
 			divider++;
-		}
 	}
-	printf("%lu", num);
+
+	printf("%lu\n", num);
 
 	return (0);
 }
+
