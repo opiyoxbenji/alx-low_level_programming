@@ -10,25 +10,17 @@
  */
 void rev_string(char *s)
 {
-	int length = 0;
-	int start = 0;
-	int end = length - 1;
+	int i = 0;
+	int length = strlen(s);
+	int middle = length / 2;
+	char temp;
 
-	if (s == NULL)
-	return;
-
-	while (s[length] != '\0')
+	while (i < middle)
 	{
-		length++;
+		temp = s[i];
+		s[i] = s[length - i - 1];
+		s[length - i - 1] = temp;
+		i++;
 	}
 
-	while (start < end)
-	{
-		char temp = s[start];
-		s[start] = s[end];
-		s[end] = temp;
-
-		start++;
-		end--;
-    	}
 }
