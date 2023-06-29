@@ -9,7 +9,7 @@
  */
 char *leet(char *str)
 {
-	char *letter = str;
+	char *letter = (char *)str;
 
 	if (str == NULL)
 	{
