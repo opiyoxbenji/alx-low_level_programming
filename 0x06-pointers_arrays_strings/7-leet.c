@@ -9,37 +9,22 @@
  */
 char *leet(char *str)
 {
-	char *letter = (char *)str;
+	int count = 0, i;
+	int low_letters[] = {97, 101, 111, 116, 109};
+	int upp_letters[] = {65, 69, 79, 84, 76};
+	int numbers[] = {52, 51, 48, 55, 49};
 
-	if (str == NULL)
+	while (*(str + count) != '\0')
 	{
-		return (NULL);
-	}
-
-	while (*letter != '\0')
-	{
-		if (*letter == 'a' || *letter == 'A')
+		for (i = 0; i < 5; i++)
 		{
-			*letter = '4';
+			if (*(str + count) == low_letters[i] || *(str + count) == upp_letters[i])
+			{
+				*(str + count) = numbers[i];
+				break;
+			}
 		}
-		else if (*letter == 'e' || *letter == 'E')
-		{
-			*letter = '3';
-		}
-		else if (*letter == 'o' || *letter == 'O')
-		{
-			*letter = '0';
-		}
-		else if (*letter == 't' || *letter == 'T')
-		{
-			*letter = '7';
-		}
-		else if (*letter == 'l' || *letter == 'L')
-		{
-			*letter = '1';
-		}
-
-		letter++;
+		count++;
 	}
 
 	return (str);
