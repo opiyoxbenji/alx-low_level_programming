@@ -1,0 +1,9 @@
+0-memset.c;-
+- _memset takes three params s, b, n
+- iterate over the memory area pointed to by s using a pointer ptr
+- while n > 0 
+- set the value at current memory location pointed to by ptr to the constant byte b
+- increment ptr to point to the next mem location
+- decrement n to track the number of remaining bytes
+
+
