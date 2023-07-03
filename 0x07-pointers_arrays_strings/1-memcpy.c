@@ -10,15 +10,15 @@
  */
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
-	char *dest_ptr = dest;
-	char *src_ptr = src;
+	int x = n;
+	int i;
 
-	while (n > 0)
+	if (x > 0)
 	{
-		src_ptr = dest_ptr;
-		dest_ptr++;
-		src_ptr++;
-		n--;
+		for (i = 0; i < x; i++)
+		{
+			dest[i] = src[i];
+		}
 	}
 
 	return (dest);
