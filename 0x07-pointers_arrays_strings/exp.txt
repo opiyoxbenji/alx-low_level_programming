@@ -9,4 +9,9 @@
 
 1-memcpy;-
 - _memcpy takes three params dest, src, n
-- 
+- integer x is declared and assigned to the value of n
+- integer i is declared
+- If the condition in the if statement is true, the for loop is entered. The loop initializes i to 0 and continues as long as i is less than a. The loop increments i by 1 in each iteration.
+Inside the loop, the byte at index i in the source memory area (src) is assigned to the byte at the corresponding index i in the destination memory area (dest). This copies the byte from the source memory area to the destination memory area.
+Once the loop finishes, all the specified bytes have been copied from the source to the destination memory area.
+Finally, the function returns the pointer to the destination memory area
