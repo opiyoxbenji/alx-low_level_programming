@@ -5,5 +5,8 @@
 - set the value at current memory location pointed to by ptr to the constant byte b
 - increment ptr to point to the next mem location
 - decrement n to track the number of remaining bytes
+- returns s
 
-
+1-memcpy;-
+- _memcpy takes three params dest, src, n
+- 
