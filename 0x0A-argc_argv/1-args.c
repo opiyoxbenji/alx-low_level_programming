@@ -9,12 +9,9 @@
  */
 int main(int argc, char **argv)
 {
-	int count;
-	
 	(void)argv;
 
-	count = argc - 1;
-	printf("%d\n", count);
+	printf("%d\n", argc - 1);
 
 	return (0);
 }
