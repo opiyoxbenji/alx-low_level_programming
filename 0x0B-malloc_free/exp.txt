@@ -4,4 +4,10 @@ The function first checks if size is equal to 0, and if so, returns NULL. Otherw
 
 If the allocation was successful, it initializes each element of the array with the specified character using a for loop, and finally returns a pointer to the array.
 
-1-strdup.c - 
+1-strdup.c - This function takes in a char pointer str that points to the string to duplicate.
+
+The function first checks if str is NULL, and if so, returns NULL. Otherwise, it calculates the length of the string using a while loop, and allocates memory for the duplicate string using malloc(). If the allocation was not successful, it returns NULL.
+
+If the allocation was successful, it copies each character of the original string into the duplicate string using a for loop, and finally returns a pointer to the duplicate string.
+
+2-str_concat.c -  
