@@ -1,0 +1,7 @@
+0-create_array.c - This function takes in two parameters: an unsigned int size that specifies the size of the array to create, and a char c that specifies the character to initialize the array with.
+
+The function first checks if size is equal to 0, and if so, returns NULL. Otherwise, it allocates memory for the array using malloc(), and checks if the allocation was successful. If it was not successful, it returns NULL.
+
+If the allocation was successful, it initializes each element of the array with the specified character using a for loop, and finally returns a pointer to the array.
+
+1-strdup.c - 
