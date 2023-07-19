@@ -1,5 +1,5 @@
 #include <stddef.h>
-#include "function_pointers.h>
+#include "function_pointers.h"
 
 /**
  * int_index - Searches for an integer in the array using the cmp function.
@@ -19,10 +19,10 @@ int int_index(int *array, int size, int (*cmp)(int))
 		{
 			if (cmp(array[i]) != 0)
 			{
-				return i;
+				return (i);
 			}
 		}
 	}
 
-	return -1;
+	return (-1);
 }
