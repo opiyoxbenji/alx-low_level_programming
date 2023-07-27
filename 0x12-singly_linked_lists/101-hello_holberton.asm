@@ -1,24 +1,15 @@
 section .data
-	hello_msg db "Hello, Holberton,", 0
-	format db "%s\n", 0
+	message  db 'Hello, Holberton', 0Ah ; message to print and a new line
 
 section .text
 	global main
+
 	extern printf
 
 main:
-	; Set up stack frame
-	push rbp
-	mov rbp, rsp
-
-	; Prepare arguments for printf
-	lea rdi, [format]	; Load format string address into rdi
-	lea rsi, [hello_msg	; Load message address into rsi
-
-	; Call printf
-	call printf
-
-	; Restore stack frame and return
-	mov rsp, rbp
-	pop rbp
+	sub rsp, 8	; Allocate space on the stack for printf's arguments
+	lea rdi, [message]	; Load the addressof the message
+	call printf	; call printf with message as argument
+	add rsp, 8	; clean up stack
+	xor eax, eax	; return 0
 	ret
