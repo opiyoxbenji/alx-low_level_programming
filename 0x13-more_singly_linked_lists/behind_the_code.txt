@@ -1,0 +1,11 @@
+Explanations of what the code is doing ;)
+
+Task 0
+- print_listint function;- is responsible for printing all the elements of a singly linked list of type listint_t. It takes a pointer to the head of the list as its parameter and it returns the number of nodes present in the list.
+- The function uses a while loop to traverse the linked list.
+- It starts with the head['h'] and iterates through the list until it reaches the end.
+- During each iteration, it prints the value of the current node['h->n'] using printf and moves the next node['h = h->next']
+- Additionally, it increments the node_count variable to keep track of the number of nodes printed
+
+Task 1
+
