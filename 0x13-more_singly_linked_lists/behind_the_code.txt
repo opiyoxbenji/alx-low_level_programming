@@ -8,4 +8,24 @@ Task 0
 - Additionally, it increments the node_count variable to keep track of the number of nodes printed
 
 Task 1
+- listint_len function;- it takes a pointer to the head of the listint_t linked as its parameter. It returns the number of elements in the list
+- count;- is used to keep track of the number of nodes and is initialesd to 0
+- while loop;-
+	- the function uses a while loop to traverse the linked list
+	- it starts with the head and iterates through the list until it 
+	reaches the end
+	- during each iteration, it increments the count variable by 1 and
+	moves to the next node['h = h->next']
+return count;- once the loop finishes the function returns the final value of count
 
+Task 2
+- add_nodeint function;- takes two parameters, a pointer to the head of the
+listint_t list(**head) and an integer value n that will be assigned to the new node. It returns the address of the new element or NULL if memory allocation failed
+- new_node;- variable will hold the address of the newly created node
+- The function uses malloc to allocate memory for the new node
+- If memory allocation failes the function returns NULL to indicate failure
+- After successful memory allocation the function assigns the value n to the n member of the new node-['new_node->n = n']
+- It then sets the next pointer of the new node to point to the current head of the list['new_node->next = *head']
+- Finally the function updates the head pointer to point to the new node
+['*head = new_node']
+- The function returns the address of the newly created node('new_node')
