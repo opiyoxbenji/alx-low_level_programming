@@ -30,12 +30,13 @@ size_t print_listint_safe(const listint_t *head)
 	if (loop_node != NULL)
 	{
 		current = head;
+		count = 0;
 
 		while (current != loop_node)
 		{
 			printf("[%p] %d\n", (void *)current, current->n);
-			count++;
 			current = current->next;
+			count++;
 		}
 
 		printf("-> [%p] %d\n", (void *)loop_node, loop_node->n);
