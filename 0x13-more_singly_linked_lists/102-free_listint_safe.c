@@ -29,7 +29,7 @@ listint_t **_ra(listint_t **list, size_t size, listint_t *new)
 
 /**
  * free_listint_safe - Frees a listint_t linked list safely.
- * @h: Pointer to a pointer to the head of the list.
+ * @head: Pointer to a pointer to the head of the list.
  *
  * Return: The size of the list that was freed.
  */
