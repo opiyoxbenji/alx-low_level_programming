@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,12 +6,30 @@
 #include <elf.h>
 
 void display_error(const char *msg);
-void display_elf(const char *filneame);
-int main(int argc, char *argv[]);
+void display_elf(const char *filename);
 void print_magic(unsigned char *ident);
 void print_class(unsigned char class);
 void print_data(unsigned char data);
 void print_os(unsigned char osabi);
+
+/**
+ * main - entry point for the program
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: 0 on success, 98 on failure
+ */
+int main(int argc, char *argv[])
+{
+	if (argc != 2)
+	{
+		display_error("Usage: elf_header elf_filename");
+	}
+
+	display_elf(argv[1]);
+
+	return (0);
+}
 
 /**
  * display_error - display error msg
@@ -23,169 +40,151 @@ void display_error(const char *msg)
 	fprintf(stderr, "%s\n", msg);
 	exit(98);
 }
+
 /**
- * print_magic - prints the maghic
- * @ident: identity
+ * display_elf - displays information contained in an ELF header
+ * @filename: name of ELF file
  */
+void display_elf(const char *filename)
+{
+	int fd;
+	Elf64_Ehdr header;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		display_error("Error: Cannot open file");
+	}
+
+	if (read(fd, &header, sizeof(header)) != sizeof(header))
+	{
+		display_error("Error: Cannot read file");
+	}
+
+	print_magic(header.e_ident);
+	print_class(header.e_ident[EI_CLASS]);
+	print_data(header.e_ident[EI_DATA]);
+	printf("Version:                            %d\n",
+			header.e_ident[EI_VERSION]);
+	print_os(header.e_ident[EI_OSABI]);
+	printf("ABI Version:                        %d\n",
+			header.e_ident[EI_ABIVERSION]);
+	printf("Type:                               %d\n",
+			header.e_type);
+	printf("Entry point address:                0x%lx\n",
+			header.e_entry);
+
+	close(fd);
+}
+
+/**
+* print_magic - prints the magic
+* @ident: identity
+*/
 void print_magic(unsigned char *ident)
 {
-	int a;
+	int i;
 
 	printf("Magic:   ");
-	for (a = 0; a < EI_NIDENT; a++)
+	for (i = 0; i < EI_NIDENT; i++)
 	{
-		printf("%02x ", ident[a]);
+		printf("%02x ", ident[i]);
 	}
 	printf("\n");
 }
+
 /**
- * print_class - prints the class
- * @class: class to be printed
- */
+* print_class - prints the class
+* @class: class to be printed
+*/
 void print_class(unsigned char class)
 {
-	printf("Class:                             ");
+	printf("Class:                              ");
 	switch (class)
 	{
-	case ELFCLASSNONE:
-		printf("None\n");
-		break;
-	case ELFCLASS32:
-		printf("ELF32\n");
-		break;
-	case ELFCLASS64:
-		printf("ELF64\n");
-		break;
-	default:
-		printf("<unknown>\n");
+		case ELFCLASSNONE:
+			printf("None\n");
+			break;
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF64\n");
+			break;
+		default:
+			printf("<unknown>\n");
+			break;
 	}
 }
+
 /**
- * print_data - prints data
- * @data: data to be printed
- */
+* print_data - prints the data encoding
+* @data: data encoding to be printed
+*/
 void print_data(unsigned char data)
 {
-	printf("Data:                              ");
+	printf("Data:                               ");
 	switch (data)
 	{
 		case ELFDATANONE:
 			printf("None\n");
 			break;
 		case ELFDATA2LSB:
-			printf("2's complement, little-endian\n");
+			printf("2's complement, little endian\n");
 			break;
 		case ELFDATA2MSB:
-			printf("2's complement, big-endian\n");
+			printf("2's complement, big endian\n");
 			break;
 		default:
 			printf("<unknown>\n");
+			break;
 	}
 }
+
 /**
- * print_os - prints the OS
- * @osabi: osabi
- */
+* print_os - prints the operating system or ABI
+* @osabi: operating system or ABI to be printed
+*/
 void print_os(unsigned char osabi)
 {
-	printf("OS/ABI:                            ");
+	printf("OS/ABI:                             ");
 	switch (osabi)
 	{
 		case ELFOSABI_SYSV:
-			printf("UNIX - System V\n");
+			printf("UNIX System V ABI\n");
 			break;
 		case ELFOSABI_HPUX:
-			printf("UNIX - HP-UX\n");
+			printf("HP-UX ABI\n");
 			break;
 		case ELFOSABI_NETBSD:
-			printf("UNIX - NetBSD\n");
+			printf("NetBSD ABI\n");
 			break;
 		case ELFOSABI_LINUX:
-			printf("UNIX - Linux\n");
+			printf("Linux ABI\n");
 			break;
 		case ELFOSABI_SOLARIS:
-			printf("UNIX - Solaris\n");
+			printf("Solaris ABI\n");
 			break;
 		case ELFOSABI_AIX:
-			printf("UNIX - AIX\n");
+			printf("AIX ABI\n");
 			break;
 		case ELFOSABI_IRIX:
-			printf("UNIX - IRIX\n");
+			printf("IRIX ABI\n");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("UNIX - FreeBSD\n");
+			printf("FreeBSD ABI\n");
 			break;
 		case ELFOSABI_TRU64:
-			printf("UNIX - TRU64\n");
+			printf("TRU64 UNIX ABI\n");
 			break;
 		case ELFOSABI_ARM:
-			printf("ARM\n");
+			printf("ARM architecture ABI\n");
 			break;
 		case ELFOSABI_STANDALONE:
-			printf("Standalone (embedded)\n");
+			printf("Standalone (embedded) application\n");
 			break;
 		default:
 			printf("<unknown>\n");
+			break;
 	}
-}
-/**
- * display_elf - displays elf file
- * @filename: file to display
- */
-void display_elf(const char *filename)
-{
-	int fd = open(filename, O_RDONLY);
-	char *file_t[] = {"None", "REL", "EXEC", "DYN", "CORE"};
-	Elf32_Ehdr header;
-
-	if (fd == -1)
-	{
-	display_error("Error: Cannot open file");
-	}
-	if (read(fd, &header, sizeof(Elf32_Ehdr)) != sizeof(Elf32_Ehdr))
-	{
-		display_error("Error: Cannot read ELF header");
-	}
-	if (header.e_ident[EI_MAG0] != ELFMAG0 ||
-		header.e_ident[EI_MAG1] != ELFMAG1 ||
-		header.e_ident[EI_MAG2] != ELFMAG2 ||
-		header.e_ident[EI_MAG3] != ELFMAG3)
-	{
-		display_error("Error: Not an ELF file");
-	}
-	print_magic(header.e_ident);
-	print_class(header.e_ident[EI_CLASS]);
-	print_data(header.e_ident[EI_DATA]);
-	printf("Version:                           %d\n",
-			header.e_ident[EI_VERSION]);
-	print_os(header.e_ident[EI_OSABI]);
-	printf("ABI Version:                       %d\n",
-			header.e_ident[EI_ABIVERSION]);
-	printf("Type:                              ");
-	if (header.e_type < sizeof(file_t) / sizeof(file_t[0]))
-	{
-		printf("%s\n", file_t[header.e_type]);
-	}
-	else
-	{
-		printf("<unknown>\n");
-	}
-	printf("Entry point address:               %#x\n", header.e_entry);
-	close(fd);
-}
-/**
- * main - main function to print all
- * @argc: argc
- * @argv: argv
- * Return: 0
- */
-int main(int argc, char *argv[])
-{
-	if (argc != 2)
-	{
-		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
-		exit(98);
-	}
-	display_elf(argv[1]);
-	return (0);
 }
