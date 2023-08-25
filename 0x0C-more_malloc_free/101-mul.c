@@ -11,7 +11,7 @@
  */
 unsigned int multiply(unsigned int num1, unsigned int num2)
 {
-    return num1 * num2;
+	return num1 * num2;
 }
 
 /**
@@ -19,35 +19,35 @@ unsigned int multiply(unsigned int num1, unsigned int num2)
  */
 void print_error(void)
 {
-    printf("Error\n");
-    exit(98);
+	printf("Error\n");
+	exit(98);
 }
 
 int main(int argc, char *argv[])
 {
-    int i;
-    unsigned int num1, num2, result;
+	int i;
+	unsigned int num1, num2, result;
 
-    if (argc != 3)
-        print_error();
+	if (argc != 3)
+	print_error();
 
-    for (i = 1; i < argc; i++)
-    {
-        char *ptr = argv[i];
-        while (*ptr != '\0')
-        {
-            if (*ptr < '0' || *ptr > '9')
-                print_error();
-            ptr++;
-        }
-    }
+	for (i = 1; i < argc; i++)
+	{
+		char *ptr = argv[i];
+		while (*ptr != '\0')
+		{
+			if (*ptr < '0' || *ptr > '9')
+				print_error();
+			ptr++;
+		}
+	}
 
-    num1 = atoi(argv[1]);
-    num2 = atoi(argv[2]);
-    result = multiply(num1, num2);
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[2]);
+	result = multiply(num1, num2);
 
-    printf("%u\n", result);
+	printf("%u\n", result);
 
-    return 0;
+	return (0);
 }
 
