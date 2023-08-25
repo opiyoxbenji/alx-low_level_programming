@@ -11,7 +11,7 @@
  */
 unsigned int multiply(unsigned int num1, unsigned int num2)
 {
-	return num1 * num2;
+	return (num1 * num2);
 }
 
 /**
@@ -23,6 +23,12 @@ void print_error(void)
 	exit(98);
 }
 
+/**
+ * main - entry point
+ * @argc: argument to c
+ * @argv: pointer
+ * Return: 0
+ */
 int main(int argc, char *argv[])
 {
 	int i;
@@ -34,6 +40,7 @@ int main(int argc, char *argv[])
 	for (i = 1; i < argc; i++)
 	{
 		char *ptr = argv[i];
+
 		while (*ptr != '\0')
 		{
 			if (*ptr < '0' || *ptr > '9')
