@@ -44,7 +44,7 @@ void print_magic(unsigned char *ident)
  */
 void print_class(unsigned char class)
 {
-	printf("Class:                              ");
+	printf("Class:                             ");
 	switch (class)
 	{
 	case ELFCLASSNONE:
@@ -66,7 +66,7 @@ void print_class(unsigned char class)
  */
 void print_data(unsigned char data)
 {
-	printf("Data:                               ");
+	printf("Data:                              ");
 	switch (data)
 	{
 		case ELFDATANONE:
@@ -88,7 +88,7 @@ void print_data(unsigned char data)
  */
 void print_os(unsigned char osabi)
 {
-	printf("OS/ABI:                             ");
+	printf("OS/ABI:                            ");
 	switch (osabi)
 	{
 		case ELFOSABI_SYSV:
@@ -156,12 +156,12 @@ void display_elf(const char *filename)
 	print_magic(header.e_ident);
 	print_class(header.e_ident[EI_CLASS]);
 	print_data(header.e_ident[EI_DATA]);
-	printf("Version:                            %d\n",
+	printf("Version:                           %d\n",
 			header.e_ident[EI_VERSION]);
 	print_os(header.e_ident[EI_OSABI]);
-	printf("ABI Version:                        %d\n",
+	printf("ABI Version:                       %d\n",
 			header.e_ident[EI_ABIVERSION]);
-	printf("Type:                               ");
+	printf("Type:                              ");
 	if (header.e_type < sizeof(file_t) / sizeof(file_t[0]))
 	{
 		printf("%s\n", file_t[header.e_type]);
@@ -170,7 +170,7 @@ void display_elf(const char *filename)
 	{
 		printf("<unknown>\n");
 	}
-	printf("Entry point address:                %#x\n", header.e_entry);
+	printf("Entry point address:               %#x\n", header.e_entry);
 	close(fd);
 }
 /**
