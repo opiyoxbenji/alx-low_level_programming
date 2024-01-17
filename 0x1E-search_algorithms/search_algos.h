@@ -1,5 +1,10 @@
-#ifndef search_algos.h
-#define search_algos.h
+#ifndef search_algos_h
+#define search_algos_h
+
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
 
 /**
  * struct listint_s - singly linked list
@@ -42,3 +47,5 @@ int interpolation_search(int *array, size_t size, int value);
 int exponential_search(int *array, size_t size, int value);
 int advanced_binary(int *array, size_t size, int value);
 listint_t *jump_list(listint_t *list, size_t size, int value);
+
+#endif
