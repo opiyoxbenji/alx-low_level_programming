@@ -1,41 +1,41 @@
 #include "search_algos.h"
 
 /**
- * _binary_search - search sorted array for a value
- * @array: array to be searched
- * @size: size of array
- * @value: value to be searched
- * @start: start index
- * @stop: end index
- * Return: index of value if found else -1
+ * binnary_search - searches for a value in a sorted array
+ * @array: pointer to the first element
+ * @low: starting point of index
+ * @high: ending point of index
+ * @value: value to search for
+ * Return: index where value is located
  */
-int _binary_search(int *array, size_t size,
-		int value, size_t start, size_t stop)
+int binnary_search(int *array, size_t low, size_t high, int value)
 {
-	size_t i;
-	ssize_t mid;
+	size_t mid, a;
 
-	while (start <= stop)
+	while (low <= high)
 	{
-		printf("Searching in array: %d", array[start]);
-		for (i = start + 1; i <= stop; i++)
-			printf(", %d", array[i]);
+		mid = (low + high) / 2;
+		printf("Searching in array: %d", array[low]);
+		for (a = low + 1; a <= high; a++)
+		{
+			printf(", %d", array[a]);
+		}
 		printf("\n");
-
-		mid = start + (stop - start) / 2;
-
 		if (array[mid] == value)
+		{
 			return (mid);
-
-		if (array[mid] < value)
-			start = mid + 1;
+		}
+		else if (array[mid] < value)
+		{
+			low = mid + 1;
+		}
 		else
-			stop = mid - 1;
+		{
+			high = mid - 1;
+		}
 	}
-
 	return (-1);
 }
-
 
 /**
  * exponential_search - Searches sorted arrays with Exponential search
@@ -65,5 +65,5 @@ int exponential_search(int *array, size_t size, int value)
 	start = (size_t)1 << (exp - 1);
 	stop = ((size_t)1 << exp) >= size ? size - 1 : (size_t)1 << exp;
 
-	return (_binary_search(array, stop - start + 1, value, start, stop));
+	return (binnary_search(array, stop - start + 1, value, start, stop));
 }
