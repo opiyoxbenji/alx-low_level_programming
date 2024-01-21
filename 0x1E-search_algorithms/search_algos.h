@@ -51,6 +51,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value);
 int binnary_search(int *array, size_t low, size_t high, int value);
 int advanced_binary_recursive(int *array, size_t low, size_t high, int value);
 void print_array(int *array, size_t start, size_t end);
+int rec_search(int *array, size_t size, int value);
 
 
 #endif
